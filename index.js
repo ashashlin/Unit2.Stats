@@ -2,9 +2,7 @@
  * @param {number[]} numbers an array of integers
  * @returns {number} the length of the array
  */
-function getLength(numbers) {
-  // TODO
-}
+function getLength(numbers) {}
 
 /**
  * @param {number[]} numbers an array of integers
@@ -97,9 +95,45 @@ function describeNumbers(numbers) {
   console.log(`The odd numbers you gave are ${getOdds(numbers)}.`);
 }
 
-const userInputString = prompt(
+function checkIfInputIsValid(userInputString) {
+  if (
+    userInputString[0] === "," ||
+    userInputString[userInputString.length - 1] === ","
+  ) {
+    return false;
+  }
+
+  for (let i = 0; i < userInputString.length; i++) {
+    if (!/[0-9-,]/.test(userInputString[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let userInputString = prompt(
   "Please enter some integers separated by commas.",
   "28,-15,30,975,400"
 );
-const numbers = convertStringToNumbers(userInputString);
+let isValid = checkIfInputIsValid(userInputString);
+
+let numbers;
+
+function validateInput() {
+  if (isValid) {
+    numbers = convertStringToNumbers(userInputString);
+  } else {
+    alert("Invalid input. Please enter some integers separated by commas.");
+    userInputString = prompt(
+      "Please enter some integers separated by commas.",
+      "28,-15,30,975,400"
+    );
+    isValid = checkIfInputIsValid(userInputString);
+    validateInput();
+  }
+}
+validateInput();
+
+// const numbers = convertStringToNumbers(userInputString);
 describeNumbers(numbers);
