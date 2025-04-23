@@ -2,14 +2,22 @@
  * @param {number[]} numbers an array of integers
  * @returns {number} the length of the array
  */
-function getLength(numbers) {}
+function getLength(numbers) {
+  return numbers.length;
+}
 
 /**
  * @param {number[]} numbers an array of integers
  * @returns {number} the sum of the numbers
  */
 function getSum(numbers) {
-  // TODO
+  let sum = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+
+  return sum;
 }
 
 /**
@@ -17,7 +25,10 @@ function getSum(numbers) {
  * @returns {number} the mean of the numbers
  */
 function getMean(numbers) {
-  // TODO
+  const sum = getSum(numbers);
+  const length = getLength(numbers);
+
+  return sum / length;
 }
 
 /**
@@ -25,7 +36,15 @@ function getMean(numbers) {
  * @returns {number} the smallest of the numbers
  */
 function getMin(numbers) {
-  // TODO
+  let min = numbers[0];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] < min) {
+      min = numbers[i];
+    }
+  }
+
+  return min;
 }
 
 /**
@@ -33,7 +52,15 @@ function getMin(numbers) {
  * @returns {number} the largest of the numbers
  */
 function getMax(numbers) {
-  // TODO
+  let max = numbers[0];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+      max = numbers[i];
+    }
+  }
+
+  return max;
 }
 
 /**
@@ -41,7 +68,10 @@ function getMax(numbers) {
  * @returns {number} the range of the numbers (max - min)
  */
 function getRange(numbers) {
-  // TODO
+  const min = getMin(numbers);
+  const max = getMax(numbers);
+
+  return `${min} to ${max}`;
 }
 
 /**
@@ -49,7 +79,15 @@ function getRange(numbers) {
  * @returns {number[]} the even numbers in the array
  */
 function getEvens(numbers) {
-  // TODO
+  const result = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      result.push(numbers[i]);
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -57,7 +95,15 @@ function getEvens(numbers) {
  * @returns {number[]} the odd numbers in the array
  */
 function getOdds(numbers) {
-  // TODO
+  const result = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 1 || numbers[i] % 2 === -1) {
+      result.push(numbers[i]);
+    }
+  }
+
+  return result;
 }
 
 // === READ BUT DO NOT EDIT THE CODE BELOW ===
